@@ -27,7 +27,11 @@
                            <td>
                                <a href="{{ route('todo.show',$todo->id) }}" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i></a>
                                <a href="#" class="btn btn-primary btn-sm mt-2"><i class="fas fa-edit"></i></a>
-                               <a href="#" class="btn btn-danger btn-sm mt-2"><i class="fas fa-minus-square"></i></a>
+                               <form class="mt-2" method="post" action="{{ route('todo.destroy',$todo->id) }}">
+                                   @csrf
+                                   @method('DELETE')
+                                   <button class="btn btn-danger btn-sm" type="submit"><i class="fas fa-backspace"></i></button>
+                               </form>
                            </td>
                        </tr>
                    @endforeach

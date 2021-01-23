@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -79,11 +80,13 @@ class TodoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
-     * @return void
+     * @param Todo $todo
+     * @return string
+     * @throws Exception
      */
-    public function destroy($id)
+    public function destroy(Todo $todo)
     {
-        //
+        $todo->delete();
+        return back();
     }
 }
