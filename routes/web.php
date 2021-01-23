@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TodoController::class, 'index']);
+Route::get('/', [TodoController::class, 'index'])->name('todo.home');
 
 //         <- ------ Todo List Route ------ ->
 Route::resource('/todo', TodoController::class);

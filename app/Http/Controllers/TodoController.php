@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
@@ -42,12 +45,12 @@ class TodoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     * @return void
+     * @param Todo $todo
+     * @return Application|Factory|View
      */
-    public function show($id)
+    public function show(Todo $todo)
     {
-        //
+        return view('todo.show', compact('todo'));
     }
 
     /**

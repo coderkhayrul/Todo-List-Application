@@ -2,7 +2,8 @@
 @section('content')
    <div class="card mt-5">
        <div class="card-header text-center bg-success">
-           <h1 class="text-light">Todos List</h1>
+{{--           <h1 class="text-light">Todos List</h1>--}}
+           <a class=" h1 text-decoration-none text-light" href="{{ route('todo.home') }}">Todos List</a>
        </div>
        <div class="card-body">
            @if(count($todos) > 0)
@@ -24,7 +25,7 @@
                            <td>{{ $todo->body }}</td>
                            <td>{{ $todo->due }}</td>
                            <td>
-                               <a href="#" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i></a>
+                               <a href="{{ route('todo.show',$todo->id) }}" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i></a>
                                <a href="#" class="btn btn-primary btn-sm mt-2"><i class="fas fa-edit"></i></a>
                                <a href="#" class="btn btn-danger btn-sm mt-2"><i class="fas fa-minus-square"></i></a>
                            </td>
