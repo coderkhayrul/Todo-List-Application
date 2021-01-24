@@ -2,8 +2,14 @@
 @section('content')
    <div class="card mt-5">
        <div class="card-header text-center bg-success">
-{{--           <h1 class="text-light">Todos List</h1>--}}
-           <a class=" h1 text-decoration-none text-light" href="{{ route('todo.home') }}">Todos List</a>
+           <div class="row">
+               <div class="col-7 text-right">
+                   <a class=" h1 text-decoration-none text-light" href="{{ route('todo.home') }}">Todos List</a>
+               </div>
+               <div class="col-5 text-right">
+                   <a class="btn btn-primary h4 text-decoration-none text-light" href="{{ route('todo.create') }}">Todo Add <i class="fas fa-calendar-plus"></i></a>
+               </div>
+           </div>
        </div>
        <div class="card-body">
            @if(count($todos) > 0)

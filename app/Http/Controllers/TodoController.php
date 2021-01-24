@@ -25,22 +25,22 @@ class TodoController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return void
+     * @return Application|Factory|View
      */
     public function create()
     {
-        //
+        return view('todo.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return void
+     * @return array
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**

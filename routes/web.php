@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//          <- ------ Todo List Root Route ------ ->
 Route::get('/', [TodoController::class, 'index'])->name('todo.home');
 
 //         <- ------ Todo List Route ------ ->
