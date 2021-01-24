@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
    <div class="card mt-5">
+       @if(Session::has('success'))
+           <p class="alert alert-danger"><i class="fas fa-check-circle"></i> {{ Session::get('success') }}</p>
+       @endif
        <div class="card-header text-center bg-success">
            <div class="row">
                <div class="col-7 text-right">
@@ -26,7 +29,7 @@
                    <tbody>
                    @foreach($todos as $todo)
                        <tr>
-                           <th scope="row">{{ $todo->id }}</th>
+                           <th scope="row">{{$loop->index }}</th>
                            <td>{{ $todo->text }}</td>
                            <td>{{ $todo->body }}</td>
                            <td>{{ $todo->due }}</td>

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="card mt-5">
+        @if(Session::has('success'))
+            <p class="alert alert-success"><i class="fas fa-check-circle"></i> {{ Session::get('success') }}</p>
+        @endif
         <div class="card-header text-center bg-success text-light">
             <div class="row">
                 <div class="col-7 text-right">
@@ -16,15 +19,18 @@
                 @csrf
                 <div class="col-md-6 form-group">
                     <label for="inputEmail4" class="form-label">Text</label>
-                    <input type="text" name="text" class="form-control">
+                    <input type="text" value="{{ old('text') }}" name="text" class="form-control  @error('text') is-invalid @enderror">
+                    @error('text') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                 </div>
                 <div class="col-md-6 form-group">
                     <label for="inputPassword4" class="form-label">Body</label>
-                    <input type="text" name="body" class="form-control" >
+                    <input type="text" value="{{ old('body') }}" name="body" class="form-control  @error('body') is-invalid @enderror" >
+                    @error('body') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                 </div>
                 <div class="col-12 form-group">
                     <label for="inputAddress" class="form-label">Due</label>
-                    <input class="form-control" name="due" type="datetime-local" id="example-datetime-local-input">
+                    <input value="{{ old('due') }}" class="form-control  @error('due') is-invalid @enderror" name="due" type="datetime-local" id="example-datetime-local-input">
+                    @error('due') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                 </div>
                 <div class="col-12 form-group">
                     <button type="submit" class="btn btn-success">Save <i class="fas fa-save"></i></button>

@@ -8,6 +8,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class TodoController extends Controller
 {
@@ -36,11 +37,24 @@ class TodoController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return array
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws ValidationException
      */
     public function store(Request $request)
     {
-        return $request->all();
+        $this->validate($request,[
+            'text' => 'required',
+            'body' => 'required',
+            'due' => 'required',
+        ]);
+        $todo = new Todo();
+        $todo->text = $request->text;
+        $todo->body = $request->body;
+        $todo->due = $request->due;
+        $todo->save();
+
+        session()->flash('success', 'Todo Created Successfully!');
+        return back();
     }
 
     /**
@@ -87,6 +101,8 @@ class TodoController extends Controller
     public function destroy(Todo $todo)
     {
         $todo->delete();
+
+        session()->flash('success', 'Todo Delete Successfully!');
         return back();
     }
 }
