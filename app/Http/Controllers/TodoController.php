@@ -71,12 +71,12 @@ class TodoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
-     * @return void
+     * @param Todo $todo
+     * @return string
      */
-    public function edit($id)
+    public function edit(Todo $todo)
     {
-        //
+        return view('todo.edit', compact('todo'));
     }
 
     /**

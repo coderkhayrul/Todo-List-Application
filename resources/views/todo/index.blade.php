@@ -35,7 +35,8 @@
                            <td>{{ $todo->due }}</td>
                            <td>
                                <a href="{{ route('todo.show',$todo->id) }}" class="btn btn-info btn-sm text-light"><i class="fas fa-eye"></i></a>
-                               <a href="#" class="btn btn-primary btn-sm mt-2"><i class="fas fa-edit"></i></a>
+                               <a href="{{ route('todo.edit',$todo->id) }}" class="btn btn-primary btn-sm mt-2"><i class="fas fa-edit"></i></a>
+{{--                           <- ------ Todo Delete Form ------ -> --}}
                                <form class="mt-2" method="post" action="{{ route('todo.destroy',$todo->id) }}">
                                    @csrf
                                    @method('DELETE')
