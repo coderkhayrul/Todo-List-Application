@@ -84,11 +84,24 @@ class TodoController extends Controller
      *
      * @param Request $request
      * @param int $id
-     * @return void
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws ValidationException
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'text' => 'required',
+            'body' => 'required',
+            'due' => 'required',
+        ]);
+        $todo = Todo::findOrFail($id);
+        $todo->text = $request->text;
+        $todo->body = $request->body;
+        $todo->due = $request->due;
+        $todo->save();
+
+        session()->flash('success', 'Todo Update Successfully!');
+        return back();
     }
 
     /**
